@@ -1,4 +1,5 @@
 "Unit 3" by Millennium
+The Story Descripition is 
 
 Chapter 0
 
@@ -10,15 +11,21 @@ RequiredStep is a number that varies.
 RequiredStep is usually 1. 
 a person can be known or unknown. a Person is usually unknown. 
 knowhere is a room.
-
+	
 Section 1 - Verbs
 
 talking to is an action applying to one visible thing. 
 Understand "talk to [someone]" as talking to. 
-digging is an action applying to a thing.
+
+digging is an action applying to one visible thing.
 Understand "dig [thing]" as digging.
 
-Section 2 - the Butler
+shooting is an action applying to one visible thing.
+Understand "shoot [someone]" as shooting.
+instead of shooting [someone]:
+	say "you fire the pistol".
+
+Section 2 - People
 
 your butler is a person.
 The butler is carrying Daniel's Letter.
@@ -43,6 +50,23 @@ Instead of talking to the butler:
 		say "Very Well Sir";
 		move butler to room corresponding to a number of StepVariable in Table of Transport;
 		move player to room corresponding to a number of StepVariable in Table of Transport;
+		increment RequiredStep.
+[after asking the butler about A hub listed in Table of Transport:
+	say "Yes sir, calling a carriage to [hub].";
+	move player to room corresponding to hub in Table of Transport;
+	move butler to room corresponding to hub in Table of Transport.
+	]
+masked follower is a person.
+understand "masked figure" as masked follower.
+masked follower is in knowhere.
+maskDead is a number that varies.
+maskDead is usually 0.
+instead of shooting masked Follower:
+	if player is carrying pistol:
+		say "You swiftly pull out your pistol and shoots him in the back. No one intimitades the great Nick-Williams Charles.";
+		now maskDead is 1;
+	else:
+		say "you form a gun with your hand and points it at his back. [line break]'pew pew', you say. [line break]The masked figure gives you a confused look, then continues onward".
 		
 Table of Transport
 Number	hub		room
@@ -75,6 +99,7 @@ After reading a command when the command prompt is "What sequences of letters do
 		say "You are ass at guessing.";
 	now the command prompt is ">";
 	reject the player's command.
+	
 Buried chest is a container in knowhere.
 understand "old chest" as buried chest.
 buried chest is closed.
@@ -84,11 +109,11 @@ Section 4 - Clothing
 
 the player is wearing a Fedora, a Trenchcoat, a pair of shoes, and slacks. 
 
-Chapter 1 physical Locations
+Chapter 1- Physical Locations
 
 Section 0- Your House
 
-The Master Bedroom is a room.	"You wake up on a stormy morning feeling worn out from a night of revels.".
+The Master Bedroom is a room.
 your butler and the player are in The Master Bedroom.
 a nightstand is a supporter in the Master Bedroom.
 a newspaper is on the nightstand. 
@@ -125,11 +150,34 @@ a patch of dirt is in the woods.
 Instead of digging:
 	if the player is carrying the shovel:
 		Say "You dig up an old chest";
-		move buried chest to woods;
+		move buried chest to player;
 		move patch of dirt to knowhere;
 	else:
 		Say "The Ground is too hard to dig with your hands".
-
+Instead of opening the buried chest:
+	if the player is carrying the buried chest:
+		Say "open chest, tower of london blah blah";
+		move buried chest to knowhere;
+		now StepVariable is 3.
+		
 Section 3 - Tower of London
 
 The outer ward is a room.
+The inner ward is inside the outer ward.
+The White Tower is inside the inner ward.
+
+Chapter 2 - events
+
+When play begins:
+	Say "You wake up on a stormy morning feeling worn out from a night of revels.".
+Confrontation is a scene. "You hear the leaves rustle behind you. When you turn around, you are confronted by a masked figure. You can see the bulge of a pistol beneathe his coat.[line break]The masked figure said, 'You are looking into some very dangerous matters. If you value your life, go home and pretend this never happened.'[line break]The masked figure turns around and begins to walk away".
+Confrontation begins when StepVariable is 3.
+Confrontation ends when time since Confrontation began is 2 minutes.
+When Confrontation begins:
+	move masked follower to woods.
+When Confrontation ends:
+	if maskDead is 0:
+		say "The masked figure merges into the shadows. ";
+	else if maskDead is 1:
+		say "You take off his mask. The masked figure is Daniel's wife!";
+	Say "You are left to ponder this surprising turn of events".
