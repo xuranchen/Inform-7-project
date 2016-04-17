@@ -11,11 +11,16 @@ RequiredStep is usually 1.
 a person can be known or unknown. a Person is usually unknown.
 a person can be alive or dead. a Person is usually alive.
 knowhere is a room.
+white tower room is a kind of room.
 
 Section 1 - Verbs
 
+Instead of asking someone about something:
+	say "trying talking to them instead".
 talking to is an action applying to one visible thing.
 Understand "talk to [someone]" as talking to.
+instead of talking to [someone]:
+	say "[the noun] does not seem to be interested in talking right now".
 
 digging is an action applying to one visible thing.
 Understand "dig under [thing]" and "dig [thing]"as digging.
@@ -23,12 +28,18 @@ Understand "dig under [thing]" and "dig [thing]"as digging.
 shooting is an action applying to one visible thing.
 Understand "shoot [someone]" as shooting.
 instead of shooting [someone]:
-	say "you fire the pistol with deadly accuracy. ".
+	if player is carrying pistol:
+		if player is in a white tower room:
+			say "Professor Addcox's voice echoed through your head: there is a time and place for everything, but not now![line break]The noise from the pistol in a crowded area will draw more attention than you want.";
+		else:
+			say "you fire the pistol with deadly accuracy, but you forgot to load the gun.";
+	else:
+		say "you reach into you pocket, then realized that, in your drunken stupor last night, you mistakenly traded your prized gun for 6 dozen turkey eggs. "
+	
 
 Section 2 - People
 
 your butler is a person.
-The butler is wearing a tuxedo, a vest, and white gloves.
 The butler is carrying Daniel's Letter.
 Instead of asking the butler about something:
 	say "I do not know about that sir. ".
@@ -60,6 +71,7 @@ Number	hub		room
 3	"the Tower of London"		outer ward
 
 Daniel's wife is a person.
+The description of daniel's wife is "[if alive] A grieving widow, distraught over the death of her husband. [end if][if dead]An agent of the Ellumena-tea. She caused the death of her husband after he uncovered a conspiracy against the crown.[end if]".
 Daniel's wife is carrying Ellumena-tea badge, a revolver, and a vial of red liquid.
 DWSpeech is a number that varies.
 DWSpeech is usually 0.
@@ -71,12 +83,7 @@ Instead of talking to Daniel's wife:
 		now DWSpeech is 1;
 	else if DWSpeech is 1:
 		say "Daniel's wife looks as though she'd regress into her previous sobbing state, but before she reverted into the soppy mess she was a moment ago, she managed to let out a few words. What you made sense of it was this: [quotation mark] He said you were the key [quotation mark]".
-Instead of examining Daniel's wife:
-	if Daniel's wife is dead:
-		say "";
-	if Daniel's wife is alive:
-		say "a grieving widow, distraught over the death of her beloved husband.".
-		
+
 masked follower is a person.
 understand "masked figure" as masked follower.
 masked follower is in knowhere.
@@ -89,9 +96,43 @@ instead of shooting masked Follower:
 	else:
 		say "you form a gun with your hand and points it at his back. [line break]'pew pew', you say. [line break]The masked figure gives you a confused look, then continues onward".
 
+ward guard is a person. 
+understand "ward guards" as ward guard.
+instead of examining ward guard:
+	say "[if alive] They stand vigilante outside of the white tower.[end if][if dead]Their corpses lay strewn about, for they were no match for the immpeccible accuracy of Nick-Williams Charles.".
+instead of shooting ward guard:
+	if player is carrying pistol:
+		now con is 1;
+		say "you pull out your pistol and attacks four armed guards. In a brilliant stroke of luck, you no-scope all four guards with one bullet.";
+		now ward guard is dead.
+instead of giving Ellumena-tea badge to ward guard:
+	if player is carrying Ellumena-tea badge:
+		say "gives badge";
+		now con is 1;
+	else:
+		say "no badge";
+instead of showing Ellumena-tea badge to ward guard:
+	if player is carrying Ellumena-tea badge:
+		say "gives badge";
+		now con is 1;
+	else:
+		say "no badge";
+		
+cell guard is a person.
+instead of examining cell guard:
+	say "[if alive][end if][if dead][end if]".
+instead of talking to cell guard:
+	say "[if alive][end if][if dead][end if]".
+instead of shooting cell guard:
+	say "You really think they let you keep a gun?".
+	
+old man is a person.
+
+
 Section 3 - Chests
 
 A combination safe is a container.
+combination safe is fixed in place.
 the combination safe is closed and locked.
 There is a note in the safe.
 instead of examining the safe:
@@ -132,13 +173,15 @@ Instead of opening the buried chest:
 	Say "You find a [a List of things in the buried chest].";
 	now buried chest is open.
 Instead of examining pile of papers:
-	say "The Ellumena-tea is the single-most elusive group in the history of the world. More precisely, they are the single-most elusive group outside of the history of the world -- conflating it with history would imply that it has been documented. Why Ellumena-tea is able to exert an unprecedented amount influence yet remain covert is a point of uncertainty. It’s essentially a secret society comprised fully of English commoners -- ones that are unsatisfied with the status quo, of course. Because of this multi nucleic design, one would think that its organization is subpar; however, that’s far from the truth.  Over the past decade (in which England’s crime rate was the highest it’s ever been) the Ellumena-tea has been responsible for over 90% of those crimes, most of those are labelled as petty theft. I understand that this is a pretty big accusation to make, but please check the papers beneath this one. I’ve compiled the results from municipal police departments, and most of the crimes committed, whether they are theft or even homicidal cases, there have been squares implanted on the nearest wall at the scene of the crime. This is a show of power if I’ve ever seen one. Despite these open signals to claim their involvement, no one has been able name a single member of the Ellumena-tea. It’s as though they are jeering at the government. [line break][line break]      The Ellumena-tea, I believe, are taking their attempt at the British throne. I might not have the complete evidence at the moment, but having followed this conglomeration of misfits for as long as I have, my intuition is more likely right than wrong. [line break][line break]	I have managed to locate the location of their headquarters to a 93% certainty. Tommorow I will approach the crown with my findings. I can't wait to share what I've found with my wife. She would be so proud of me.";
+	say "The Ellumena-tea is the single-most elusive group in the history of the world. More precisely, they are the single-most elusive group outside of the history of the world -- conflating it with history would imply that it has been documented. Why Ellumena-tea is able to exert an unprecedented amount influence yet remain covert is a point of uncertainty. It’s essentially a secret society comprised fully of English commoners -- ones that are unsatisfied with the status quo, of course. Because of this multi nucleic design, one would think that its organization is subpar; however, that’s far from the truth.  Over the past decade (in which England’s crime rate was the highest it’s ever been) the Ellumena-tea has been responsible for over 90% of those crimes, most of those are labelled as petty theft. I understand that this is a pretty big accusation to make, but please check the papers beneath this one. I’ve compiled the results from municipal police departments, and most of the crimes committed, whether they are theft or even homicidal cases, there have been squares implanted on the nearest wall at the scene of the crime. This is a show of power if I’ve ever seen one. Despite these open signals to claim their involvement, no one has been able name a single member of the Ellumena-tea. It’s as though they are jeering at the government. [line break][line break]      The Ellumena-tea, I believe, are taking their attempt at the British throne. I might not have the complete evidence at the moment, but having followed this conglomeration of misfits for as long as I have, my intuition is more likely right than wrong. [line break][line break]	I have managed to locate the location of their headquarters to a 93% certainty. Tommorow I will approach the crown with my findings.[line break] As an aside, I can't wait to share what I've found with my wife. She would be so proud of me.";
 	if StepVariable is 2:
+		say "[line break]    You've just unearthed an unreasonably large conspiracy which is sure to debase the public's trust in Parliament's power if it were leaked. It's likely best that you keep this within yourself. Judging from what Daniel's papers have disclosed about this organization, it's a threat to the country if news of Ellumina-tea's destructive power is brought to the public--not to mention their latest goal of assassinating the crown.[line break]";
 		increment StepVariable;
 		
 Section 4 - Clothing
 
 the player is wearing a Fedora, a Trenchcoat, a pair of shoes, and slacks.
+The butler is wearing a tuxedo, a vest, and white gloves.
 
 Chapter 1- Physical Locations
 
@@ -148,11 +191,11 @@ The Master Bedroom is a room. "[if unvisited]A ray of sunlight permeates through
 your butler and the player are in The Master Bedroom.
 a nightstand is a supporter in the Master Bedroom.
 a newspaper is on the nightstand.
-an empty glass of water is on the nightstand. empty glass of water is fixed in place.
+an embroidered dress is on the nightstand. The description of the embroidered dress is "You do not recall ever seeing this item before, perhaps you have had more to drink than you remember. ".
 a pistol is in the Master Bedroom.
 Instead of taking the pistol:
 	if player is not carrying the pistol:
-		say "You carefully stuff the pistol into your coat pockets. Never had you fired one before-- never had you the need. You recall a phrase your late mother used to say: [quotation mark]no man wins in a game of fire[quotation mark]";
+		say "You carefully stuff the pistol into your coat pockets. Never had you fired one before-- never had you the need. You recall a phrase your late mother used to say: [quotation mark]no man wins in a game of fire[quotation mark][line break]";
 		move pistol to the player;
 	otherwise:
 		say "You've already taken the pistol";
@@ -181,12 +224,23 @@ Instead of examining Daniel's Letter:
 
 Section 1 - Daniel's House
 
-The parlour is a room. "[if unvisited]The carriage abruptly stops against the sidewalk in front of Daniel’s estate. Normally, the butler would rushedly exit the carriage and issue an apologetic bow, but the debilitating sense of gloom hung as an overcast upon the scene. The recieving party at the door included Daniel's wife, whose cheeks were stained with dried tears. Perhaps it would be best if you were to first approach the effective leader of the house.[end if]".
+The parlour is a room. "[if unvisited]The carriage abruptly stops against the sidewalk in front of Daniel’s estate. Normally, the butler would rushedly exit the carriage and issue an apologetic bow, but the debilitating sense of gloom hung as an overcast upon the scene. The recieving party at the door included Daniel's wife, whose cheeks were stained with dried tears. Perhaps it would be best if you were to first approach the effective leader of the house.[end if][line break] You can see the kitchen to the north".
 Daniel's wife is in the parlour.
-The kitchen is north of the parlour.
-The basement is below the kitchen.
-the combination safe is in the basement.
-
+The kitchen is north of the parlour. "The kitchen is small but cozy. Two chairs are neatly tucked underneath a brown rectangular -shaped table.[if fake basket of fruit is in kitchen] A basket of fruit rests in the middle of the table ; upon closer inspection, the unnatural shiny reflection of the ceiling light on the fruit gives it away as being metallic.[end if][if glass of wine is in kitchen] A glass of wine sits on the countertop.[end if] To the right of the counter lies a whirring kettle on the stove and a compact silver-colored refrigerator. Dirty dishes are piled up in the sink to the left of the counter.[line break] You can see the parlour to the south and a basement beneath you.".
+two chairs, Table, a counter top are in the kitchen.
+table, counter top is a supporter.
+a fake basket of fruit is on the table.
+a glass of wine is on the counter top.
+chairs are fixed in place.
+The basement is below the kitchen. " The room is dark and humid. It is hard to tell what is inside the room. The place seems messy. There must be a fight that happened here. Daniel barely comes here, so there might be clues about his disappearance. [line break] You can see the kitchen above you".
+the description of chair is "A simple backed chair. It has seen some use.".
+the description of table is "A brown rectangular table. The family used to eat here.".
+the description of counter top is "A marble counter top. ".
+the description of fake basket of fruit is "A basket of fruit rests in the middle of the table ; upon closer inspection, the unnatural shiny reflection of the ceiling light on the fruit gives it away as being metallic.".
+the description of glass of wine is "A half filled glass of wine. ".
+the combination safe, a lamb, a notebook is in the basement.
+the description of lamb is "A baby lamb! What is it doing in the basement?".
+the description of notebook is "A plain notebook. You can tell that a dozen pages are missing. ".
 
 Section 2 - Greenwich Park
 
@@ -196,23 +250,48 @@ The park entrance is a room.
 The garden is west of the park entrance.
 the shovel is in the garden.
 the woods are south of the park entrance.
-a tall oak tree is in the woods.
-Instead of digging:
+a tall oak tree is in the woods. "An ancient oak tree that towers over all the other tree. ". tall oak tree is fixed in place.
+Instead of digging the tall oak tree:
 	if the player is carrying the shovel:
-		Say "You dig up an old chest";
-		move buried chest to woods;
+		if the buried chest is not in woods:
+			Say "You dig up an old chest";
+			move buried chest to woods;
+		else:
+			Say "you keep digging, to no avail.";
 	else if the digTrial is 5:
-		Say "You dig up an old chest";
-		move buried chest to woods;
+		if the buried chest is not in woods:
+			Say "You dig up an old chest";
+			move buried chest to woods;
+		else:
+			Say "you keep digging, to no avail.";
 	else:
 		Say "The Ground is too hard to dig with your hands, but your efforts have caused the ground to loosen up somewhat.";
 		increase digTrial by 1.
 
 Section 3 - Tower of London
 
-The outer ward is a room.
-The inner ward is inside the outer ward.
-The White Tower is inside the inner ward.
+The outer ward is a room. "[if unvisited]You arrive at the Tower of London as the clock strikes midnight. The tower has long since closed to the public and this is a perfect opportunity to do some investigation.[end if] [line break]To the south you see the entrance to the Inner Ward.".
+The inner ward is south of the outer ward.
+ward guard is in the Inner ward. 
+dungeon, The Solar, Storeroom, Great Hall are rooms.
+The solar is south of the inner ward. 
+the great hall is south of the solar.
+the storeroom is west of the great hall.
+Saint John's chapel is south of the great hall.
+Instead of going south from inner ward:
+	if unvisited:
+		if con is 0:
+			now con is 2;
+		if con is 1:
+			move player to Solar;
+	else:
+		move player to Solar.
+cell guard is in storeroom
+dungeon chest is a container in the dungeon.
+dungeon chest is closed and locked.
+cell door is a closed, locked  door.
+cell door is west of the dungeon and east of the great hall.
+cell door is lockable and locked.
 
 Chapter 2 - events
 
@@ -226,7 +305,45 @@ When Confrontation ends:
 		if player is in woods:
 			say "The masked figure merges into the shadows. You are left to ponder this surprising turn of events";
 	else if maskDead is 1:
-		say "You take off his mask. The masked figure is Daniel's wife! Maybe she is holding additional information.";
+		say "You take off his mask. The masked figure is Daniel's wife! Upon searching her, you discover an organization badge.[line break]You now have Ellumena-tea badge. Perhaps now, you might be able to infiltrate this sinister organization.";
 		move daniel's wife to woods;
 		now daniel's wife is dead;
+		move Ellumena-tea badge to player;
 	move masked follower to knowhere.
+
+Confrontation2 is a scene."walk in inner, confronted, asked for identification".
+Confrontation2 begins when player is in inner ward for the first time.  
+con is a number that varies.
+con is 0.
+Confrontation2 ends when con is not 0.
+When confrontation2 ends:
+	if con is 2:
+		say "You try to enter the white tower, but the guards tackle and restrain you. ";
+		now everything carried by the player is in the dungeon chest;
+		now player is in dungeon.
+
+Captured is a scene. "A short while later, you find yourself a prisoner in the Tower of London minus all of your belongings.[line break]You are now in the dungeon ".
+captured begins when player is in dungeon for the first time.
+captured ends when time since captured began is 6 minutes.
+when captured begins:
+	now cell guard is in the dungeon.
+when captured ends:
+	say "butler breaks you out";
+	now cell guard is dead;
+	now dungeon chest is open;
+	now dungeon chest is unlocked;
+	now cell door is open;
+	now cell door is unlocked;
+	now butler is in dungeon.
+
+wrong way is a scene. "".
+wrong way begins when player is in storeroom for the first time.
+when wrong way begins:
+	if cell guard is alive:
+		now everything carried by the player is in the dungeon chest;
+		move player to dungeon.
+
+[climax is a scene. "".
+climax begins when player is in Saint John's chapel for the first time.
+climax ends when player goes north from solar.
+when climax begins]
