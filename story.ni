@@ -107,16 +107,16 @@ instead of shooting ward guard:
 		now ward guard is dead.
 instead of giving Ellumena-tea badge to ward guard:
 	if player is carrying Ellumena-tea badge:
-		say "gives badge";
+		say "You give the badge to the guard, they glance briefly and let you pass. ";
 		now con is 1;
 	else:
-		say "no badge";
+		say "You do not have a badge.";
 instead of showing Ellumena-tea badge to ward guard:
 	if player is carrying Ellumena-tea badge:
-		say "gives badge";
+		say "You give the badge to the guard, they glance briefly and let you pass. ";
 		now con is 1;
 	else:
-		say "no badge";
+		say "You do not have a badge.";
 		
 cell guard is a person.
 instead of examining cell guard:
@@ -344,7 +344,7 @@ When Confrontation ends:
 		move Ellumena-tea badge to player;
 	move masked follower to knowhere.
 
-Confrontation2 is a scene."walk in inner, confronted, asked for identification".
+Confrontation2 is a scene."You walk into the Inner Tower. Several guards confront you and ask for a badge of membership.".
 Confrontation2 begins when player is in inner ward for the first time.  
 con is a number that varies.
 con is 0.
@@ -376,11 +376,12 @@ when wrong way begins:
 		now everything carried by the player is in the dungeon chest;
 		move player to dungeon.
 
-climax is a scene. "enter".
+climax is a scene. "You enter Saint John's Chapel. You find yourself face-to-face with an old man. [line break][quotation mark]You must be one following the paths of that other nobleman,[quotation mark] he says, [quotation mark]I did not expect you to make it so far[quotation mark][line break][quotation mark]Before you do anything rash, let me offer you an alternative. My name is lord Will I-am Skaekspeer. This revolution is something that I have been cultivating my entire life. Parliament is weak, corrupt, and most importantly, me. I am sorry your friend had to die, but his death was a necessary evil in the grand scheme of evolution. Join me, and you could rule this nation by my side. If you wish to take me up on this offer, meet me in the great hall. I have something to show you.[quotation mark][line break]This is your last chance to make a decision, choose wisely my old friend.".
 climax begins when player is in Saint John's chapel for the first time.
 climax ends when player is in great hall.
 when climax ends:
 	if old man is dead:
 		end the story finally saying "With Lord Shaekspeer dead, the Ellumena-tea falls into disarray. The royal guard is able to quickly dispatch the remainder of the conspiracy group. With no more obstacles in her path, Queen Victoria rose to become one of the finest queens England has ever seen. She led England to reclaim what were the American colonies in the third world war, exterminated the 1876 zombie apocalypse, and heralded a new British Empire.";
 	if old man is alive:
-		end the story finally saying "Without the intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazillian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
+		say "You follow Shaekspeer out into the Great Hall. Suddenly, guards surround you. you glance around, wondering what is going on when they open fire. Your last thought as the world faded was that you left your stove on this morning.[line break]";
+		end the story finally saying "Without the desperately needed intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazillian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
