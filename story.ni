@@ -99,7 +99,7 @@ instead of shooting masked Follower:
 ward guard is a person. 
 understand "ward guards" as ward guard.
 instead of examining ward guard:
-	say "[if alive] They stand vigilantly outside of the white tower.[end if][if dead]The ward guards' corpses lay strewn about, for they were no match for the immpeccible accuracy of Nick-Williams Charles. Hubris aside, you must soon arrange for the burial of these men.".
+	say "[if alive] They stand vigilantly outside of the white tower.[end if][if dead]The ward guards' corpses lay strewn about, for they were no match for the impeccible accuracy of Nick-Williams Charles. Hubris aside, you must soon arrange for the burial of these men.".
 instead of shooting ward guard:
 	if player is carrying pistol:
 		now con is 1;
@@ -107,16 +107,16 @@ instead of shooting ward guard:
 		now ward guard is dead.
 instead of giving Ellumena-tea badge to ward guard:
 	if player is carrying Ellumena-tea badge:
-		say "You give the badge to the guard, they glance briefly and let you pass. ";
+		say "gives badge";
 		now con is 1;
 	else:
-		say "You do not have a badge.";
+		say "no badge";
 instead of showing Ellumena-tea badge to ward guard:
 	if player is carrying Ellumena-tea badge:
-		say "You give the badge to the guard, they glance briefly and let you pass. ";
+		say "gives badge";
 		now con is 1;
 	else:
-		say "You do not have a badge.";
+		say "no badge";
 		
 cell guard is a person.
 instead of examining cell guard:
@@ -256,16 +256,10 @@ Section 2 - Greenwich Park
 
 digTrial is a number that varies.
 digTrial is usually 0.
-The park entrance is a room. "[if unvisited]Your carriage pulls up to the entrance of Greenwich Park. It is approaching dusk. you used to come here every day for exercise. The dying light bathed the park in an ominous gloom. [end if][if visited]The entrance to Greenwich Park. [end if][line break]You see garden to the west and woods to the south.".
-a park bench is a supporter in park entrance.
-
-The garden is west of the park entrance. "a beautiful garden. You used to take walks here with Daniel and his family. [line break]You see park entrance to the east.".
-a shovel, manure, flowers is in the garden. 
-
-Instead of examining shovel:
-	say "A shovel left by the gardeners.".
-the woods are south of the park entrance. "An forest of oaks. You rarely come here during your visits to the park.[line break]You see park entrance to the north.".
-shrubbery and willow tree are fixed in place in woods.
+The park entrance is a room.
+The garden is west of the park entrance.
+the shovel is in the garden.
+the woods are south of the park entrance.
 a tall oak tree is in the woods. "An ancient oak tree that towers over all the other tree.  Though you've strolled past this same area of the park a countless number of times throughout your childhood, never had you taken note of the tree's collosal size. Its roots reached far and it towered higher than any tree you'd ever seen, but it was unmistakably dead. Its branches were either entirely barren or overburdened with snow. For some strange reason, you cannot help but liken it to the current state of affairs in London.". tall oak tree is fixed in place.
 Instead of digging the tall oak tree:
 	if the player is carrying the shovel:
@@ -283,21 +277,6 @@ Instead of digging the tall oak tree:
 	else:
 		Say "The Ground is too hard to dig with your hands, but your efforts have caused the ground to loosen up somewhat.";
 		increase digTrial by 1.
-instead of examining park bench:
-	say "A normal park bench.".
-instead of examining shovel:
-	say "It seems to be have been left behind by the gardeners. It looks very useful for digging things up.".
-instead of examining flowers:
-	say "a beautiful venus flytrap. You wonder how many victims it has claimed today.".
-instead of examining manure:
-	say "It seem to have been left by some sort of pet, perhaps a crocodile.".
-instead of examining shrubbery:
-	say "It is covered by those red fruits mommy always said were fine to yet.".
-instead of examining willow tree:
-	say "Nope, not an oak tree.".
-instead of examining oak tree:
-	say "Seems to be a tree of the oak variety. You regret not paying attention to Dr. Einstein's biology lessons. ".
-
 
 Section 3 - Tower of London
 
@@ -305,10 +284,31 @@ The outer ward is a room. "[if unvisited]You arrive at the Tower of London as th
 The inner ward is south of the outer ward.
 ward guard is in the Inner ward. 
 dungeon, The Solar, Storeroom, Great Hall are rooms.
+
 The solar is south of the inner ward. 
 the great hall is south of the solar.
 the storeroom is west of the great hall.
 Saint John's chapel is south of the great hall.
+
+patio chair is in the solar.
+patio chair is a supporter.
+Instead of examining patio chair: 
+	say "You've sat in many chairs, but quite like this one. This might just transcend any form of luxuries you've ever experienced in a chair. The perpetrator of this scheme might be a nuissance, but he has good taste in chairs.";
+	
+cabinet is in storeroom. 
+cabinet is a container. 
+cabinet is fixed in place. 
+cabinet is closed. 
+Fine brandy is in cabinet. 
+Instead of opening cabinet: 
+	say "You see a bottle of fine brandy inside of the cabinet, probably what the guards have been sipping on all the while.";
+	now cabinet is open;
+
+Instead of examining cabinet:
+	say "It's a pretty old cabinet. Probably not worth the time to open it.";
+Instead of examining brandy:
+	say ". . . As much as you want to, it's probably not the time for this.";
+
 Instead of going south from inner ward:
 	if unvisited:
 		if con is 0:
@@ -344,7 +344,7 @@ When Confrontation ends:
 		move Ellumena-tea badge to player;
 	move masked follower to knowhere.
 
-Confrontation2 is a scene."You walk into the Inner Tower. Several guards confront you and ask for a badge of membership.".
+Confrontation2 is a scene."walk in inner, confronted, asked for identification".
 Confrontation2 begins when player is in inner ward for the first time.  
 con is a number that varies.
 con is 0.
@@ -354,6 +354,14 @@ When confrontation2 ends:
 		say "You try to enter the white tower, but the guards tackle and restrain you. ";
 		now everything carried by the player is in the dungeon chest;
 		now player is in dungeon.
+
+pail of water is in dungeon. 
+Instead of examining pail of water:
+	say "This exceedingly dirty pail--likely not even fit to be used for livestock--is your only companion within the cell. The pail's appearance detracts from the sentiment of the guards to even provide you with water. It's more of an insult than anything.";
+
+Instead of taking pail of water: 
+	say "You reach to grab the pail by its handle, but you make contact with a centipede coiled around its rim. You decide against taking the bucket.";
+
 
 Captured is a scene. "A short while later, you find yourself emprisoned in the Tower of London having lost all of your belongings.[line break]Confronting the guards was a mistake--your status had no bearing here. In a positive light, the unlawful incarceration is further proof that you are where you were trying to be--right in the heart of the Elumina-tea. ".
 captured begins when player is in dungeon for the first time.
@@ -376,12 +384,11 @@ when wrong way begins:
 		now everything carried by the player is in the dungeon chest;
 		move player to dungeon.
 
-climax is a scene. "You enter Saint John's Chapel. You find yourself face-to-face with an old man. [line break][quotation mark]You must be one following the paths of that other nobleman,[quotation mark] he says, [quotation mark]I did not expect you to make it so far[quotation mark][line break][quotation mark]Before you do anything rash, let me offer you an alternative. My name is lord Will I-am Skaekspeer. This revolution is something that I have been cultivating my entire life. Parliament is weak, corrupt, and most importantly, me. I am sorry your friend had to die, but his death was a necessary evil in the grand scheme of evolution. Join me, and you could rule this nation by my side. If you wish to take me up on this offer, meet me in the great hall. I have something to show you.[quotation mark][line break]This is your last chance to make a decision, choose wisely my old friend.".
+climax is a scene. "enter".
 climax begins when player is in Saint John's chapel for the first time.
 climax ends when player is in great hall.
 when climax ends:
 	if old man is dead:
 		end the story finally saying "With Lord Shaekspeer dead, the Ellumena-tea falls into disarray. The royal guard is able to quickly dispatch the remainder of the conspiracy group. With no more obstacles in her path, Queen Victoria rose to become one of the finest queens England has ever seen. She led England to reclaim what were the American colonies in the third world war, exterminated the 1876 zombie apocalypse, and heralded a new British Empire.";
 	if old man is alive:
-		say "You follow Shaekspeer out into the Great Hall. Suddenly, guards surround you. you glance around, wondering what is going on when they open fire. Your last thought as the world faded was that you left your stove on this morning.[line break]";
-		end the story finally saying "Without the desperately needed intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazillian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
+		end the story finally saying "Without the intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazillian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
