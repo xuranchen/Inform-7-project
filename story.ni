@@ -256,10 +256,16 @@ Section 2 - Greenwich Park
 
 digTrial is a number that varies.
 digTrial is usually 0.
-The park entrance is a room.
-The garden is west of the park entrance.
-the shovel is in the garden.
-the woods are south of the park entrance.
+The park entrance is a room. "[if unvisited]Your carriage pulls up to the entrance of Greenwich Park. It is approaching dusk. you used to come here every day for exercise. The dying light bathed the park in an ominous gloom. [end if][if visited]The entrance to Greenwich Park. [end if][line break]You see garden to the west and woods to the south.".
+a park bench is a supporter in park entrance.
+
+The garden is west of the park entrance. "a beautiful garden. You used to take walks here with Daniel and his family. [line break]You see park entrance to the east.".
+a shovel, manure, flowers is in the garden. 
+
+Instead of examining shovel:
+	say "A shovel left by the gardeners.".
+the woods are south of the park entrance. "An forest of oaks. You rarely come here during your visits to the park.[line break]You see park entrance to the north.".
+shrubbery and willow tree are fixed in place in woods.
 a tall oak tree is in the woods. "An ancient oak tree that towers over all the other tree.  Though you've strolled past this same area of the park a countless number of times throughout your childhood, never had you taken note of the tree's collosal size. Its roots reached far and it towered higher than any tree you'd ever seen, but it was unmistakably dead. Its branches were either entirely barren or overburdened with snow. For some strange reason, you cannot help but liken it to the current state of affairs in London.". tall oak tree is fixed in place.
 Instead of digging the tall oak tree:
 	if the player is carrying the shovel:
@@ -277,6 +283,21 @@ Instead of digging the tall oak tree:
 	else:
 		Say "The Ground is too hard to dig with your hands, but your efforts have caused the ground to loosen up somewhat.";
 		increase digTrial by 1.
+instead of examining park bench:
+	say "A normal park bench.".
+instead of examining shovel:
+	say "It seems to be have been left behind by the gardeners. It looks very useful for digging things up.".
+instead of examining flowers:
+	say "a beautiful venus flytrap. You wonder how many victims it has claimed today.".
+instead of examining manure:
+	say "It seem to have been left by some sort of pet, perhaps a crocodile.".
+instead of examining shrubbery:
+	say "It is covered by those red fruits mommy always said were fine to yet.".
+instead of examining willow tree:
+	say "Nope, not an oak tree.".
+instead of examining oak tree:
+	say "Seems to be a tree of the oak variety. You regret not paying attention to Dr. Einstein's biology lessons. ".
+
 
 Section 3 - Tower of London
 
