@@ -174,6 +174,7 @@ Instead of examining note:
 		say "the note is in chest.".
 		
 Buried chest is a container in knowhere.
+buried chest is fixed in place.
 Instead of examining the buried chest:
 	say "[if buried chest is open]inside the old chest is [a list of things in buried chest][end if][if buried chest is closed]the chest is closed[end if]".
 understand "old chest" and "chest" as buried chest.
