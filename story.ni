@@ -52,7 +52,7 @@ Instead of attacking the butler:
 Understand "hit [the butler]"  or "punch [the butler]" as attacking.
 Instead of talking to the butler:
 	if butler is unknown:
-		say "There is a letter for you sir. The courrier delivered it in the dead of the night, and I felt it couldn't be so urgent as to disturb you in your sleep. My apologies sir.[line break]You now have Daniel's Letter";
+		say "There is a letter for you sir. The courier delivered it in the dead of the night, and I felt it couldn't be so urgent as to disturb you in your sleep. My apologies sir.[line break]You now have Daniel's Letter";
 		move Daniel's letter to the player;
 		now butler is known;
 	otherwise if RequiredStep > StepVariable:
@@ -79,7 +79,7 @@ Instead of talking to Daniel's wife:
 	if Daniel's wife is dead:
 		say "With a noble's upbringing the great Nick-William Charles had been taught various skills and arts, but unfortunately, speaking to the dead isn't one ";
 	else if DWSpeech is 0:
-		say "Daniel's wife begins crying violently as you take a few steps toward her. It's difficult to assess what would be appropriate in this situation. Perhaps you should try again after she regains her composure. [line break]You think it rude to take note that she has lets out a lot fewer tears than she does violent fits.";
+		say "Daniel's wife begins crying violently as you take a few steps toward her. It's difficult to assess what would be appropriate in this situation. Perhaps you should try again after she regains her composure. [line break]You think it rude to take note that she has let out a lot fewer tears than she does violent fits.";
 		now DWSpeech is 1;
 	else if DWSpeech is 1:
 		say "Daniel's wife looks as though she'd regress into her previous sobbing state, but before she reverted into the soppy mess she was a moment ago, she managed to let out a few words. What you made sense of it was this: [quotation mark] He said you were the key [quotation mark]".
@@ -91,7 +91,7 @@ maskDead is a number that varies.
 maskDead is usually 0.
 instead of shooting masked Follower:
 	if player is carrying pistol:
-		say "You swiftly pull out your pistol and shoots him in the back. No one intimitades the great Nick-Williams Charles.";
+		say "You swiftly pull out your pistol and shoots him in the back. No one intimidates the great Nick-Williams Charles.";
 		now maskDead is 1;
 	else:
 		say "you form a gun with your hand and points it at his back. [line break]'pew pew', you say. [line break]The masked figure gives you a confused look, then continues onward".
@@ -129,7 +129,7 @@ instead of shooting cell guard:
 old man is a person.
 instead of shooting the old man:
 	if player is carrying pistol:
-		say "You shoot the decrepid figure before you. It takes a few shots before you finally hit the mark. ";
+		say "You shoot the decrepit figure before you. It takes a few shots before you finally hit the mark. ";
 		now old man is dead;
 	else:
 		say "Don't you wish you had gun right now?".
@@ -184,21 +184,21 @@ Instead of opening the buried chest:
 	Say "You find a [a List of things in the buried chest].";
 	now buried chest is open.
 Instead of examining pile of papers:
-	say "The Ellumena-tea is the single-most elusive group in the history of the world. More precisely, they are the single-most elusive group outside of the history of the world -- conflating it with history would imply that it has been documented. Why Ellumena-tea is able to exert an unprecedented amount influence yet remain covert is a point of uncertainty. It’s essentially a secret society comprised fully of English commoners -- ones that are unsatisfied with the status quo, of course. Because of this multi nucleic design, one would think that its organization is subpar; however, that’s far from the truth.  Over the past decade (in which England’s crime rate was the highest it’s ever been) the Ellumena-tea has been responsible for over 90% of those crimes, most of those are labelled as petty theft. I understand that this is a pretty big accusation to make, but please check the papers beneath this one. I’ve compiled the results from municipal police departments, and most of the crimes committed, whether they are theft or even homicidal cases, there have been squares implanted on the nearest wall at the scene of the crime. This is a show of power if I’ve ever seen one. Despite these open signals to claim their involvement, no one has been able name a single member of the Ellumena-tea. It’s as though they are jeering at the government. [line break][line break]      The Ellumena-tea, I believe, are taking their attempt at the British throne. I might not have the complete evidence at the moment, but having followed this conglomeration of misfits for as long as I have, my intuition is more likely right than wrong. [line break][line break]	I have managed to locate the location of their headquarters to a 93% certainty. Tommorow I will approach the crown with my findings.[line break] As an aside, I can't wait to share what I've found with my wife. She would be so proud of me.";
+	say "The Ellumena-tea is the single-most elusive group in the history of the world. More precisely, they are the single-most elusive group outside of the history of the world -- conflating it with history would imply that it has been documented. Why Ellumena-tea is able to exert an unprecedented amount influence yet remain covert is a point of uncertainty. It’s essentially a secret society comprised fully of English commoners -- ones that are unsatisfied with the status quo, of course. Because of this multi nucleic design, one would think that its organization is subpar; however, that’s far from the truth.  Over the past decade (in which England’s crime rate was the highest it’s ever been) the Ellumena-tea has been responsible for over 90% of those crimes, most of those are labelled as petty theft. I understand that this is a pretty big accusation to make, but please check the papers beneath this one. I’ve compiled the results from municipal police departments, and most of the crimes committed, whether they are theft or even homicidal cases, there have been squares implanted on the nearest wall at the scene of the crime. This is a show of power if I’ve ever seen one. Despite these open signals to claim their involvement, no one has been able name a single member of the Ellumena-tea. It’s as though they are jeering at the government. [line break][line break]      The Ellumena-tea, I believe, are taking their attempt at the British throne. I might not have the complete evidence at the moment, but having followed this conglomeration of misfits for as long as I have, my intuition is more likely right than wrong. [line break][line break]	I have managed to locate the location of their headquarters to a 93% certainty. Tomorrow I will approach the crown with my findings.[line break] As an aside, I can't wait to share what I've found with my wife. She would be so proud of me.";
 	if StepVariable is 2:
 		say "[line break]    You've just unearthed an unreasonably large conspiracy which is sure to debase the public's trust in Parliament's power if it were leaked. It's likely best that you keep this within yourself. Judging from what Daniel's papers have disclosed about this organization, it's a threat to the country if news of Ellumina-tea's destructive power is brought to the public--not to mention their latest goal of assassinating the crown.[line break]";
 		increment StepVariable;
 		
 Section 4 - Clothing
 
-the player is wearing a Fedora, a Trenchcoat, a pair of shoes, and slacks.
+the player is wearing a Fedora, a Trench-coat, a pair of shoes, and slacks.
 The butler is wearing a tuxedo, a vest, and white gloves.
 
 Chapter 1- Physical Locations
 
 Section 0- Your House
 
-The Master Bedroom is a room. "[if unvisited]A ray of sunlight permeates through the red cashmere curtains laid over the towering bedside window. Having spent an eventful at a distant cousin's debutante ball, you haven’t much energy to even sit up in bed. Three minutes into your attempt at regaining wakefulness, your butler notices the break in your eyelids and enters the room to pay his respects. [line break][line break]Your butler stands at the corner of the room, awaiting your orders. He's second to none when it comes to the matter of fealty; however, he seems to be assuming a most dutiful stance.  He must be awfully eager to tell you something.[end if]".
+The Master Bedroom is a room. "[if unvisited]A ray of sunlight permeates through the red cashmere curtains laid over the towering bedside window. Having spent an eventful night at a distant cousin's debutante ball, you haven’t much energy to even sit up in bed. Three minutes into your attempt at regaining wakefulness, your butler notices the break in your eyelids and enters the room to pay his respects. [line break][line break]Your butler stands at the corner of the room, awaiting your orders. He's second to none when it comes to the matter of fealty; however, he seems to be assuming a most dutiful stance.  He must be awfully eager to tell you something.[end if]".
 your butler and the player are in The Master Bedroom.
 a nightstand is a supporter in the Master Bedroom.
 a newspaper is on the nightstand.
@@ -213,7 +213,7 @@ Instead of taking the pistol:
 
 Instead of examining the newspaper:
 	If the player is carrying the newspaper:
-		say "Your eyes align with today's headline: English nobleman dead in freak accident... In a few lines, it's revealed that the victim was none other that your friend Daniel..";
+		say "Your eyes align with today's headline: English nobleman dead in freak accident... in a few lines, it's revealed that the victim was none other that your friend Daniel..";
 	Otherwise:
 		say "Something on the front page catches your attention, but you cannot make out the details. Perhaps picking it up will help.";
 
@@ -222,7 +222,7 @@ Understand "read [newspaper]" or "look at [newspaper]" as examining.
 
 Instead of examining Daniel's Letter:
 	if the player is carrying Daniel's Letter:
-		say "To my good friend Charles,[line break]     I've discovered something large, Charles. I entreat you to come visit me, for I cannot disclose something of this magnitude over my written word. Please do come soon![line break]	If this reaches you too late. Remember, you are the key.[line break]	Yours truly, Daniel[line break][line break]";
+		say "To my good friend Charles,[line break]     I've discovered something large, Charles. I entreat you to come visit me, for I cannot disclose something of this magnitude over my written word. Please do come soon![line break]	If this reaches you too late, remember, you are the key.[line break]	Yours truly, Daniel[line break][line break]";
 		if the player is not carrying the newspaper:
 			say "You see a newspaper on your nightstand in the corner of you field of vision.";
 		if the player is carrying the newspaper:
@@ -237,7 +237,7 @@ Section 1 - Daniel's House
 
 The parlour is a room. "[if unvisited]The carriage abruptly stops against the sidewalk in front of Daniel’s estate. Normally, the butler would rushedly exit the carriage and issue an apologetic bow, but the debilitating sense of gloom hung as an overcast upon the scene. The recieving party at the door included Daniel's wife, whose cheeks were stained with dried tears. Perhaps it would be best if you were to first approach the effective leader of the house.[end if][line break] You can see the kitchen to the north".
 Daniel's wife is in the parlour.
-The kitchen is north of the parlour. "The kitchen is small but cozy. Two chairs are neatly tucked underneath a brown rectangular -shaped table.[if fake basket of fruit is in kitchen] A basket of fruit rests in the middle of the table ; upon closer inspection, the unnatural shiny reflection of the ceiling light on the fruit gives it away as being metallic.[end if][if glass of wine is in kitchen] A glass of wine sits on the countertop.[end if] To the right of the counter lies a whirring kettle on the stove and a compact silver-colored refrigerator. Dirty dishes are piled up in the sink to the left of the counter.[line break] You can see the parlour to the south and a basement beneath you.".
+The kitchen is north of the parlour. "The kitchen is small but cozy. Two chairs are neatly tucked underneath a brown rectangular-shaped table.[if fake basket of fruit is in kitchen] A basket of fruit rests in the middle of the table ; upon closer inspection, the unnatural shiny reflection of the ceiling light on the fruit gives it away as being metallic.[end if][if glass of wine is in kitchen] A glass of wine sits on the countertop.[end if] To the right of the counter lies a whirring kettle on the stove and a compact silver-colored refrigerator. Dirty dishes are piled up in the sink to the left of the counter.[line break] You can see the parlour to the south and a basement beneath you.".
 two chairs, Table, a counter top are in the kitchen.
 table, counter top is a supporter.
 a fake basket of fruit is on the table.
@@ -409,4 +409,4 @@ when climax ends:
 		end the story finally saying "With Lord Shaekspeer dead, the Ellumena-tea falls into disarray. The royal guard is able to quickly dispatch the remainder of the conspiracy group. With no more obstacles in her path, Queen Victoria rose to become one of the finest queens England has ever seen. She led England to reclaim what were the American colonies in the third world war, exterminated the 1876 zombie apocalypse, and heralded a new British Empire.";
 	if old man is alive:
 		say "You follow Shaekspeer out into the Great Hall. Suddenly, guards surround you. you glance around, wondering what is going on when they open fire. Your last thought as the world faded was that you left your stove on this morning.[line break]";
-		end the story finally saying "Without the desperately needed intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazillian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
+		end the story finally saying "Without the desperately needed intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazilian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
