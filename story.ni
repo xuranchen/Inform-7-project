@@ -34,7 +34,7 @@ instead of shooting [someone]:
 		else:
 			say "you fire the pistol with deadly accuracy, but you forgot to load the gun.";
 	else:
-		say "you reach into you pocket, then realized that, in your drunken stupor last night, you mistakenly traded your prized gun for 6 dozen turkey eggs. "
+		say "you reach into you pocket, then realized that last night, you mistakenly traded your prized show-gun for 6 dozen turkey eggs in your drunken stupor."
 	
 
 Section 2 - People
@@ -42,7 +42,7 @@ Section 2 - People
 your butler is a person.
 The butler is carrying Daniel's Letter.
 Instead of asking the butler about something:
-	say "I do not know about that sir. ".
+	say "I know nothing of that sir. ".
 Instead of telling the butler about something:
 	say "the butler listens attentively, but you can tell that he does not care.".
 Instead of giving something to the butler:
@@ -71,15 +71,15 @@ Number	hub		room
 3	"the Tower of London"		outer ward
 
 Daniel's wife is a person.
-The description of daniel's wife is "[if alive] A grieving widow, distraught over the death of her husband. [end if][if dead]An agent of the Ellumena-tea. She caused the death of her husband after he uncovered a conspiracy against the crown.[end if]".
+The description of daniel's wife is "[if alive] A grieving widow, distraught over the death of her husband. [end if][if dead]An agent of the Ellumena-tea. She caused the death of her husband as he struggled to uncover a conspiracy against the crown.[end if]".
 Daniel's wife is carrying Ellumena-tea badge, a revolver, and a vial of red liquid.
 DWSpeech is a number that varies.
 DWSpeech is usually 0.
 Instead of talking to Daniel's wife:
 	if Daniel's wife is dead:
-		say "wierdo";
+		say "With a noble's upbringing the great Nick-William Charles had been taught various skills and arts, but unfortunately, speaking to the dead isn't one ";
 	else if DWSpeech is 0:
-		say "Daniel's wife begins crying violantly as you take a few steps toward her. It's difficult to assess what would be appropriate in this situation. Perhaps you should try again after she regains her composure. [line break]You think it rude to take note that she has lets out a lot fewer tears than she does violent fits.";
+		say "Daniel's wife begins crying violently as you take a few steps toward her. It's difficult to assess what would be appropriate in this situation. Perhaps you should try again after she regains her composure. [line break]You think it rude to take note that she has lets out a lot fewer tears than she does violent fits.";
 		now DWSpeech is 1;
 	else if DWSpeech is 1:
 		say "Daniel's wife looks as though she'd regress into her previous sobbing state, but before she reverted into the soppy mess she was a moment ago, she managed to let out a few words. What you made sense of it was this: [quotation mark] He said you were the key [quotation mark]".
@@ -99,11 +99,11 @@ instead of shooting masked Follower:
 ward guard is a person. 
 understand "ward guards" as ward guard.
 instead of examining ward guard:
-	say "[if alive] They stand vigilante outside of the white tower.[end if][if dead]Their corpses lay strewn about, for they were no match for the immpeccible accuracy of Nick-Williams Charles.".
+	say "[if alive] They stand vigilantly outside of the white tower.[end if][if dead]The ward guards' corpses lay strewn about, for they were no match for the immpeccible accuracy of Nick-Williams Charles. Hubris aside, you must soon arrange for the burial of these men.".
 instead of shooting ward guard:
 	if player is carrying pistol:
 		now con is 1;
-		say "you pull out your pistol and attacks four armed guards. In a brilliant stroke of luck, you no-scope all four guards with one bullet.";
+		say "You pull out your pistol and attacks four armed guards. In a brilliant stroke of luck, you no-scope all four guards with one bullet.";
 		now ward guard is dead.
 instead of giving Ellumena-tea badge to ward guard:
 	if player is carrying Ellumena-tea badge:
@@ -167,7 +167,7 @@ After reading a command when the command prompt is "What sequences of letters do
 	reject the player's command.
 Instead of examining note:
 	if player is carrying note:
-		say "To whom this may concern,[line break]	If you're reading this, I have most likely left this world. If you want to know what happened to me, go to Greenwich Park. Under the roots of the tallest oak tree, you will find the culmination of my work. It is everything I have worked on for a decade. I hope you are my friend.";
+		say "To whom this may concern,[line break]	    If you're reading this, I am most likely no longer a part of this world. If you want to know what happened to me, go to Greenwich Park. Under the roots of the tallest oak tree, you will find the culmination of my work. It is everything I have worked on for a decade. My one sincere hope is that you are my friend but if not that, a friend of England.";
 		if StepVariable is 1:
 			increment StepVariable;
 	else:
@@ -225,7 +225,7 @@ Instead of examining Daniel's Letter:
 		if the player is not carrying the newspaper:
 			say "You see a newspaper on your nightstand in the corner of you field of vision.";
 		if the player is carrying the newspaper:
-			say "[line break] [line break]It seems to be a dire situation. There may be a connection between Daniel's death and this big discovery he seems to have made.[line break]I should talk to my butler and ask him to call a carriage.";
+			say "[line break] [line break]It seems to be a dire situation. There may be a connection between Daniel's death and this big discovery he seems to have made.[line break]I should talk to my butler and ask him to call a carriage. ";
 		if StepVariable is 0:
 			increment StepVariable;
 	otherwise:
@@ -244,13 +244,13 @@ a glass of wine is on the counter top.
 chairs are fixed in place.
 The basement is below the kitchen. " The room is dark and humid. It is hard to tell what is inside the room. The place seems messy. There must be a fight that happened here. Daniel barely comes here, so there might be clues about his disappearance. [line break] You can see the kitchen above you".
 the description of chair is "A simple backed chair. It has seen some use.".
-the description of table is "A brown rectangular table. The family used to eat here.".
-the description of counter top is "A marble counter top. ".
+the description of table is "A brown rectangular table. The family probably ate here on occasion.".
+the description of counter top is "A marble counter-top. ".
 the description of fake basket of fruit is "A basket of fruit rests in the middle of the table ; upon closer inspection, the unnatural shiny reflection of the ceiling light on the fruit gives it away as being metallic.".
-the description of glass of wine is "A half filled glass of wine. ".
+the description of glass of wine is "A half filled glass of wine. You could envision Daniel sitting in his ".
 the combination safe, a lamb, a notebook is in the basement.
-the description of lamb is "A baby lamb! What is it doing in the basement?".
-the description of notebook is "A plain notebook. You can tell that a dozen pages are missing. ".
+the description of lamb is "Daniel was always more on the eccentric side, but a baby lamb? What is it doing in his basement!".
+the description of notebook is "A plain notebook. There seem to be a few pages ripped out. ".
 
 Section 2 - Greenwich Park
 
@@ -260,7 +260,7 @@ The park entrance is a room.
 The garden is west of the park entrance.
 the shovel is in the garden.
 the woods are south of the park entrance.
-a tall oak tree is in the woods. "An ancient oak tree that towers over all the other trees. ". tall oak tree is fixed in place.
+a tall oak tree is in the woods. "An ancient oak tree that towers over all the other tree.  Though you've strolled past this same area of the park a countless number of times throughout your childhood, never had you taken note of the tree's collosal size. Its roots reached far and it towered higher than any tree you'd ever seen, but it was unmistakably dead. Its branches were either entirely barren or overburdened with snow. For some strange reason, you cannot help but liken it to the current state of affairs in London.". tall oak tree is fixed in place.
 Instead of digging the tall oak tree:
 	if the player is carrying the shovel:
 		if the buried chest is not in woods:
@@ -280,7 +280,7 @@ Instead of digging the tall oak tree:
 
 Section 3 - Tower of London
 
-The outer ward is a room. "[if unvisited]You arrive at the Tower of London as the clock strikes midnight. The tower has long since closed to the public and this is a perfect opportunity to do some investigation.[end if] [line break]To the south you see the entrance to the Inner Ward.".
+The outer ward is a room. "[if unvisited]You arrive at the Tower of London as the clock strikes midnight. The tower has long since closed to the public and this is a perfect opportunity to investigate.[end if] [line break]To the south, you see the entrance to the Inner Ward.".
 The inner ward is south of the outer ward.
 ward guard is in the Inner ward. 
 dungeon, The Solar, Storeroom, Great Hall are rooms.
@@ -307,7 +307,7 @@ old man is in saint john's chapel.
 
 Chapter 2 - events
 
-Confrontation is a scene. "[line break]You hear the leaves rustle behind you. When you turn around, you are confronted by a masked figure. You can see the bulge of a pistol beneathe his coat.[line break]The masked figure said, 'You are looking into some very dangerous matters. If you value your life, go home and pretend this never happened.'[line break]The masked figure turns around and begins to walk away".
+Confrontation is a scene. "[line break]You hear the leaves rustle behind you. When you turn around, you are confronted by a masked figure. You can see the bulge of a pistol beneathe his coat.[line break]The masked figure said, [quotation mark] You are looking into some very dangerous matters. If you value your life, go home and pretend this never happened.[quotation mark][line break]The masked figure turns around and begins to walk away".
 Confrontation begins when StepVariable is 3.
 Confrontation ends when time since Confrontation began is 2 minutes.
 When Confrontation begins:
@@ -317,7 +317,7 @@ When Confrontation ends:
 		if player is in woods:
 			say "The masked figure merges into the shadows. You are left to ponder this surprising turn of events";
 	else if maskDead is 1:
-		say "You take off his mask. The masked figure is Daniel's wife! Upon searching her, you discover an organization badge.[line break]You now have Ellumena-tea badge. Perhaps now, you might be able to infiltrate this sinister organization.";
+		say "You take off his mask. The masked figure is Daniel's wife! What a turn of events! Upon searching her, you discover an organization badge.[line break]You now have Ellumena-tea badge. Perhaps now, you may be able to infiltrate this sinister organization.";
 		move daniel's wife to woods;
 		now daniel's wife is dead;
 		move Ellumena-tea badge to player;
@@ -334,13 +334,13 @@ When confrontation2 ends:
 		now everything carried by the player is in the dungeon chest;
 		now player is in dungeon.
 
-Captured is a scene. "A short while later, you find yourself a prisoner in the Tower of London minus all of your belongings.[line break]You are now in the dungeon ".
+Captured is a scene. "A short while later, you find yourself emprisoned in the Tower of London having lost all of your belongings.[line break]Confronting the guards was a mistake--your status had no bearing here. In a positive light, the unlawful incarceration is further proof that you are where you were trying to be--right in the heart of the Elumina-tea. ".
 captured begins when player is in dungeon for the first time.
 captured ends when time since captured began is 6 minutes.
 when captured begins:
 	now cell guard is in the dungeon.
 when captured ends:
-	say "butler breaks you out";
+	say "You nearly resign to your fate as a prisoner in this dreary jail, but as you begin to close your eyes for the night in submission, a peculiar turn of events took place. You hear a commotion not far from your own cell. Through the slit of the cell door, you can see a familiar figure brawling with a guard, wielding a foreign-looking blade. A moment later, you hear a clanging at the lock apparatus of your door, and the doors subsequently flung open. The man behind it was none other than your butler. [line break] [line break] [quotation mark] Master, I advise that you quit stumbling about. As far as I understand, you have more important matters to attend to [quotation mark] [line break] With that, the butler gestures you to continue your pursuit.";
 	now cell guard is dead;
 	now dungeon chest is open;
 	now dungeon chest is unlocked;
