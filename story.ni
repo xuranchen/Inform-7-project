@@ -120,13 +120,23 @@ instead of showing Ellumena-tea badge to ward guard:
 		
 cell guard is a person.
 instead of examining cell guard:
-	say "[if alive][end if][if dead][end if]".
+	say "[if alive]Elite members of the Ellumena-tea, they stand at attention. [end if][if dead]They're bodies are eviserated by your butler's precise cuts. He is definitely getting a raise[end if]".
 instead of talking to cell guard:
-	say "[if alive][end if][if dead][end if]".
+	say "[if alive]The guards are well trained, they will not respond to your words.[end if][if dead]Their eyes open. Just Kidding, they're dead. Stop talking to dead people[end if]".
 instead of shooting cell guard:
 	say "You really think they let you keep a gun?".
 	
 old man is a person.
+instead of shooting the old man:
+	if player is carrying pistol:
+		say "You shoot the decrepid figure before you. It takes a few shots before you finally hit the mark. ";
+		now old man is dead;
+	else:
+		say "Don't you wish you had gun right now?".
+instead of attacking the old man:
+	say "[if old man is alive]You are without weapons, but you are young and strong. You attack the old man with intent to kill. When the dust settles, you're the only living soul remaining in the chapel.[end if][if old man is dead]You strike at his corpse, you monster.";
+	now old man is dead.
+
 
 
 Section 3 - Chests
@@ -250,7 +260,7 @@ The park entrance is a room.
 The garden is west of the park entrance.
 the shovel is in the garden.
 the woods are south of the park entrance.
-a tall oak tree is in the woods. "An ancient oak tree that towers over all the other tree. ". tall oak tree is fixed in place.
+a tall oak tree is in the woods. "An ancient oak tree that towers over all the other trees. ". tall oak tree is fixed in place.
 Instead of digging the tall oak tree:
 	if the player is carrying the shovel:
 		if the buried chest is not in woods:
@@ -288,10 +298,12 @@ Instead of going south from inner ward:
 		move player to Solar.
 cell guard is in storeroom
 dungeon chest is a container in the dungeon.
+dungeon chest is fixed in place.
 dungeon chest is closed and locked.
 cell door is a closed, locked  door.
 cell door is west of the dungeon and east of the great hall.
 cell door is lockable and locked.
+old man is in saint john's chapel.
 
 Chapter 2 - events
 
@@ -336,14 +348,18 @@ when captured ends:
 	now cell door is unlocked;
 	now butler is in dungeon.
 
-wrong way is a scene. "".
+wrong way is a scene. "You stumble into the storeroom. To your surprise, several guards lounged within, sipping on some high quality brandy. [line break] They jump in surprise, then quickly grab you.".
 wrong way begins when player is in storeroom for the first time.
 when wrong way begins:
 	if cell guard is alive:
 		now everything carried by the player is in the dungeon chest;
 		move player to dungeon.
 
-[climax is a scene. "".
+climax is a scene. "enter".
 climax begins when player is in Saint John's chapel for the first time.
-climax ends when player goes north from solar.
-when climax begins]
+climax ends when player is in great hall.
+when climax ends:
+	if old man is dead:
+		end the story finally saying "With Lord Shaekspeer dead, the Ellumena-tea falls into disarray. The royal guard is able to quickly dispatch the remainder of the conspiracy group. With no more obstacles in her path, Queen Victoria rose to become one of the finest queens England has ever seen. She led England to reclaim what were the American colonies in the third world war, exterminated the 1876 zombie apocalypse, and heralded a new British Empire.";
+	if old man is alive:
+		end the story finally saying "Without the intervention of Lord Nick-William Charles, the Ellumena-tea closed in on the new Queen Victoria. Within a decade, she was assassinated and Shaekspeer ascended to the throne. He abolished parliament and ruled over England with an iron fist. Any sign of dissent. One bright side to all this, is that England immediately took to arms when Russo-Brazillian Leader Pierre Hitler started conquering surrounding territories, thus preventing the 45 year-long Mexican Revolution.".
